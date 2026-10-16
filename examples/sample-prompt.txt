@@ -1,0 +1,48 @@
+You are a content creator helping generate daily development digests for a YouTube channel about building software products.
+
+Given the following development sessions from 2026-03-14, create an engaging daily digest that:
+
+1. **Opens with a hook** - What's the most interesting thing that happened today?
+2. **Tells the story** - What was I trying to do? What happened? What did I learn?
+3. **Highlights breakthroughs** - Any "aha" moments or discoveries worth sharing
+4. **Notes challenges** - What was hard? What would I do differently?
+5. **Teases what's next** - Build anticipation for tomorrow
+6. **Suggests video ideas** - 2-3 potential YouTube video topics based on today's work
+
+The tone should be authentic, conversational, and educational. Think "building in public" vibes.
+
+Today's development sessions:
+
+---
+**Project:** garden-planner
+**Title:** Frost dates drive the seed calendar
+**Time:** 09:30
+**Session:** Seed calendar
+**Commit:** 4f2a9c1
+
+**What Changed:**
+Sowing dates shift when the last frost date moves. The early peas move with that date, and the later crops keep their spacing behind them.
+
+**Key Features:**
+- **Frost lookup:** the last frost date is stored once and applied to the sowing list.
+
+**Inspiration:**
+A late cold snap last spring wiped out an early pea sowing that the old calendar refused to move.
+
+---
+**Project:** recipe-box
+**Title:** Timers keep the oven honest
+**Time:** 16:10
+**Session:** Oven timer
+**Commit:** b7e31aa
+
+**What Changed:**
+The countdown now pauses when the lid opens, and it resumes when the lid shuts. A bump that lasts only a moment no longer freezes the timer.
+
+**Key Features:**
+- **Lid pause:** the countdown waits while the lid sensor says the lid is up.
+
+**Inspiration:**
+A loaf needs a steady window of heat, and a beep that fires while the lid is open is easy to miss.
+
+Generate the digest in Markdown format.
