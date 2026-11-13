@@ -514,9 +514,17 @@ class ChangelogDigestTest(unittest.TestCase):
                 self.assertEqual(code, 0)
                 self.assertEqual(stderr, "")
                 self.assertEqual(stdout, expected)
+            # source: Door 8 audit 11-12, the post says it works without an API key, so the README
+            # documents the no-key path; the pipe's right side is the reader's own Claude Code login,
+            # checked as text and not launched, and its left side must print the bare prompt.
+            pipe = " | claude -p"
+            self.assertIn("python3 changelog_digest.py examples/sample-changelog.md --date 2026-03-14 --dry-run" + pipe, commands)
             for command in commands:
                 if command == "python3 -m unittest discover -s tests -v":
                     continue
+                if command.endswith(pipe):
+                    command = command[: -len(pipe)]
+                    self.assertIn("--dry-run", command.split())
                 python3_dry_run = command.startswith(
                     "python3 changelog_digest.py "
                 ) and "--dry-run" in command

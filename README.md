@@ -41,7 +41,15 @@ The dry run needs no package, so plain Python 3.9 or newer runs it too:
 python3 changelog_digest.py examples/sample-changelog.md --date 2026-03-14 --dry-run
 ```
 
-A real run needs `ANTHROPIC_API_KEY`:
+With no API key, the dry run still gets you a digest. It prints the whole prompt and nothing else, so any chat model can write the digest from it. If you use Claude Code, pipe the prompt in and your Claude login writes the digest:
+
+```bash
+python3 changelog_digest.py examples/sample-changelog.md --date 2026-03-14 --dry-run | claude -p
+```
+
+Without Claude Code, copy the dry-run output into any chat and send it. The reply is the digest.
+
+A run that calls the model itself needs `ANTHROPIC_API_KEY`:
 
 ```bash
 uv run changelog_digest.py examples/sample-changelog.md --date 2026-03-14
