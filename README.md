@@ -29,6 +29,11 @@ The time is optional. Put a line that is exactly `---` between entries. A `## ` 
 
 ## Quick start
 
+```bash
+git clone https://github.com/SanDiegoAIStudio/changelog-digest.git
+cd changelog-digest
+```
+
 uv reads the dependency from the script and installs it on the first run.
 
 ```bash
@@ -66,6 +71,35 @@ Output folder form:
 ```bash
 uv run changelog_digest.py examples/sample-changelog.md --date 2026-03-14 --out-dir digests
 ```
+
+## Example
+
+`examples/sample-changelog.md` holds two entries from 2026-03-14, a garden planner at 09:30 and a recipe box at 16:10. With no API key, print the prompt and let your Claude Code login write the digest:
+
+```bash
+python3 changelog_digest.py examples/sample-changelog.md --date 2026-03-14 --dry-run | claude -p
+```
+
+The dry run alone prints the prompt saved as [examples/sample-prompt.txt](examples/sample-prompt.txt). The digest that came back starts like this:
+
+```
+# Daily Dev Digest: March 14, 2026
+
+## Today's Hook
+
+**Both of today's apps learned the same thing: time has to bend when the real world changes.**
+
+### Morning: making the seed calendar follow the frost (garden-planner · 09:30 · `4f2a9c1`)
+
+**What changed:** the last frost date is now the anchor for the whole calendar. ...
+
+### Afternoon: the oven timer that waits for the lid (recipe-box · 16:10 · `b7e31aa`)
+
+- The countdown **pauses when the lid sensor reports the lid is open** and **resumes when it shuts**.
+- A **bump that lasts only a moment no longer freezes the timer.**
+```
+
+It goes on to breakthroughs, challenges, what comes next and three video ideas, such as "The Bug You Get When You Trust a Sensor", a short or a 5 to 8 minute tutorial on debouncing. A full saved digest is in [examples/sample-digest.md](examples/sample-digest.md).
 
 ## Options
 
